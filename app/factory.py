@@ -24,6 +24,13 @@ def create_app(settings=None):
     # We'll override the defaults in test_config.py if given here.
     app.config.from_mapping(settings)
 
+    if app.config.get("DEBUG"):
+        db_logger = logging.getLogger("sqlalchemy.engine")
+        db_logger.setLevel(logging.INFO)
+
+        app_logger = logging.getLogger("app")
+        app_logger.setLevel(logging.DEBUG)
+
     # Initialize the database with the application.
     db.init_app(app)
 

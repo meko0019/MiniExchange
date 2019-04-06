@@ -3,7 +3,6 @@ import time
 
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import Column, Integer
-from sqlalchemy.dialects.postgresql import ENUM
 from sqlalchemy.ext.compiler import compiles
 from sqlalchemy.sql import expression
 from sqlalchemy.sql import text

@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    image: miniexchange:1.0.0
+    build: .
+    command: "gunicorn -c gunicorn.conf.py app.run:app"
+    ports:
+      - 8000:8000
+    depends_on:
+      - postgres
+  postgres:
+    image: postgres:11.2
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=miniexchange
+    ports:
+      - 5432:5432
+  websocket:
+    image: websocket
+    command: "python websocket.py"
+    ports:
+      - localhost:8765

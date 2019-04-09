@@ -1,5 +1,5 @@
 import os
-
+import logging
 import flask
 
 from app.database import db
@@ -38,8 +38,6 @@ def create_app(settings=None):
     from app.api.views import api_blueprint
    
     app.register_blueprint(api_blueprint)
-
-
 
 
     return app

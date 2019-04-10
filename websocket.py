@@ -1,6 +1,7 @@
 import asyncio
 import websockets
 import logging 
+from app.tasks import handle_message
 
 # WS server
 
